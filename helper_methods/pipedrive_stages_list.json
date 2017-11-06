@@ -1,0 +1,19 @@
+{
+  "name": "Listar todos os estágios",
+  "helper_method_key": "pipedrive_stages_list",
+  "requests":[
+    {
+      "method_name":"/stages",
+      "params":{},
+      "response_field":["data"],
+      "mapping":{
+        "label":{
+          "fields":["name"]
+        },
+        "value":{
+          "field":"id"
+        }
+      }
+    }
+  ]
+}

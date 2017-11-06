@@ -1,0 +1,28 @@
+{
+  "name":"Pipedrive",
+  "app_id":"pipedrive",
+  "website":"https://www.pipedrive.com",
+  "signup_url":"https://app.pipedrive.com/register",
+  "api_base_uri":{
+    "production":{
+      "uri": "https://api.pipedrive.com/v1",
+      "label": "Produção"
+    }
+  },
+  "description":"O Pipedrive é uma ferramenta internacional de CRM on-line. Usada por micro, pequenas e médias empresas no processo de vendas ou até mesmo em captação de investimento.",
+  "authentication":{
+    "type":"pass_through_query_string",
+    "fields":[
+      {
+        "name": "api_token",
+        "label": "API Key",
+        "type": "text",
+        "validations":[{"name":"min_length", "value":7}]
+      }
+    ],
+    "ping_request":{
+      "method":"/deals",
+      "params":{"limit":1}
+    }
+  }
+}

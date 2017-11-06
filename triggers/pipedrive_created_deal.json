@@ -1,0 +1,162 @@
+{
+  "name":{
+    "pt_BR":"negociação criada",
+    "en":"created deal"
+  },
+  "trigger_key":"created_deal",
+  "description":{
+    "pt_br":"Para cada nova negociação",
+    "en":"For each new deal"
+  },
+  "trigger_fields":{
+    "type":"local",
+    "fields":[
+      {
+        "key":"id",
+        "name":"id do deal",
+        "source":"source[:id]",
+        "description":"Identificador do Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"status",
+        "name":"status do deal",
+        "source":"source[:id]",
+        "description":"Status do Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"title",
+        "name":"título do deal",
+        "source":"source[:title]",
+        "description":"Título do Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"person_id.email",
+        "name":"email do cliente do deal",
+        "source":"source[:person_id][:email].first[:value]",
+        "description":"Email da pessoa associada ao Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"person_id.name",
+        "name":"cliente do deal nome",
+        "source":"source[:person_id][:name]",
+        "description":"Nome da pessoa associada ao Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"value",
+        "name":"valor do deal",
+        "source":"source[:value]",
+        "description":"Valor do Deal",
+        "field_type":"decimal"
+      },
+      {
+        "key":"org_id.name",
+        "name":"organizaçao nome",
+        "description":"Nome da organizarção da negociação",
+        "field_type":"string"
+      },
+      {
+        "key":"won_time",
+        "name":"data em que o deal foi ganho",
+        "source":"format_date(format_timezone(source[:won_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "description":"Data em que o deal foi ganho",
+        "field_type":"string"
+      },
+      {
+        "key":"lost_time",
+        "name":"data em que o deal foi perdido",
+        "source":"format_date(format_timezone(source[:lost_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "description":"Data em que o deal foi perdido",
+        "field_type":"string"
+      },
+      {
+        "key":"lost_reason",
+        "name":"motivo de perda",
+        "source":"source[:lost_reason]",
+        "description":"Motivo de perda do deal",
+        "field_type":"string"
+      },
+      {
+        "key":"add_time",
+        "name":"data em que o deal foi criado",
+        "source":"format_date(format_timezone(source[:add_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "description":"Data em que o deal foi criado",
+        "field_type":"string"
+      },
+      {
+        "key":"currency",
+        "name":"moeda",
+        "source":"source[:currency]",
+        "description":"Sigla da moeda utilizada. Ex.: BRL",
+        "field_type":"string"
+      },
+      {
+        "key":"creator_user_id.id",
+        "name":"id do criador do deal",
+        "source":"source[:creator_user_id][:id]",
+        "description":"ID do criador do Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"creator_user_id.name",
+        "name":"nome do criador do deal",
+        "source":"source[:creator_user_id][:name]",
+        "description":"Nome do criador do Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"creator_user_id.email",
+        "name":"email do criador do deal",
+        "source":"source[:creator_user_id][:email]",
+        "description":"Email do criador do Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"user_id.id",
+        "name":"id do responsável pelo deal",
+        "source":"source[:user_id][:id]",
+        "description":"ID do responsável pelo Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"user_id.name",
+        "name":"nome do responsável pelo deal",
+        "source":"source[:user_id][:name]",
+        "description":"Nome do responsável pelo Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"user_id.email",
+        "name":"email do responsável pelo deal",
+        "source":"source[:user_id][:email]",
+        "description":"Email do responsável pelo Deal",
+        "field_type":"string"
+      },
+      {
+        "key":"update_time",
+        "name":"data em que o deal foi atualizado",
+        "source":"format_date(format_timezone(source[:update_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "description":"Data em que o deal foi atualizado",
+        "field_type":"string"
+      }
+    ]
+  },
+  "trigger_type":"polling",
+  "base_datetime_filter":{
+    "field":["add_time"],
+    "format":"%Y-%m-%d %H:%M:%S"
+  },
+  "request":{
+    "method_name":"/deals",
+    "params":{
+      "limit":100,
+      "sort":"add_time DESC"
+    },
+    "response_field":"data",
+    "additional_resources":[]
+  }
+}
