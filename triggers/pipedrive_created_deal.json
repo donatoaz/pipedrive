@@ -148,7 +148,8 @@
   "trigger_type":"polling",
   "base_datetime_filter":{
     "field":["add_time"],
-    "format":"%Y-%m-%d %H:%M:%S"
+    "format":"%Y-%m-%d %H:%M:%S",
+    "zone": "London"
   },
   "request":{
     "method_name":"/deals",
