@@ -166,7 +166,7 @@
   "base_datetime_filter":{
     "field":["won_time"],
     "format":"%Y-%m-%d %H:%M:%S",
-    "zone": "London"
+    "zone":"London"
   },
   "request":{
     "method_name":"/deals",
@@ -175,6 +175,12 @@
       "sort":"won_time DESC"
     },
     "response_field":"data",
-    "additional_resources":[]
+    "additional_resources":[
+      {
+        "name":"products",
+        "method":"/deals/{id}/products",
+        "response_field":"data"
+      }
+    ]
   }
 }
