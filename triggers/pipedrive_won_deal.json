@@ -179,6 +179,7 @@
       {
         "name":"products",
         "method":"/deals/{id}/products",
+        "extra_params":["id"],
         "response_field":"data"
       }
     ]
