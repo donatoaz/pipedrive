@@ -35,9 +35,14 @@
       {
         "key":"person_id.email",
         "name":"cliente do deal email",
-        "source":"source[:person_id][:email].first[:value]",
         "description":"Email da pessoa associada ao Deal",
-        "field_type":"string"
+        "field_type":"string",
+        "metadata":{
+          "field":"person_id.email",
+          "meta_key":"primary",
+          "key":true,
+          "value":"value"
+        }
       },
       {
         "key":"person_id.name",
@@ -45,6 +50,18 @@
         "source":"source[:person_id][:name]",
         "description":"Nome da pessoa associada ao Deal",
         "field_type":"string"
+      },
+      {
+        "key":"person_id.phone.primary",
+        "name":"cliente do deal telefone principal",
+        "description":"Telefone principal da pessoa associada ao Deal",
+        "field_type":"string",
+        "metadata":{
+          "field":"person_id.phone",
+          "meta_key":"primary",
+          "key":true,
+          "value":"value"
+        }
       },
       {
         "key":"value",
