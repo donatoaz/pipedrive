@@ -161,6 +161,29 @@
         }
       },
       {
+        "key":"org_name",
+        "name":{
+          "pt_BR":"Nome da organização",
+          "en":"Organization name"
+        },
+        "description":{
+          "pt_BR":"Nome da organização da pessoa de contato",
+          "en":"Name of the contact person organization"
+        },
+        "field_type":"custom",
+        "required":false,
+        "visible":true,
+        "advanced":false,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
         "key":"phone",
         "name":{
           "pt_BR":"Telefone do cliente",
