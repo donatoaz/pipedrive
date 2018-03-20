@@ -1,0 +1,365 @@
+{
+  "name":{
+    "pt_BR":"Criar/atualizar negócio",
+    "en":"Create/update deal"
+  },
+  "action_key":"update_or_create_deal",
+  "description":{
+    "pt_BR":"Cria ou atualiza um negócio no Pipedrive",
+    "en":"Create or update a Pipedrive deal"
+  },
+  "action_fields":{
+    "fields":[
+      {
+        "key":"stage_id",
+        "label":{
+          "pt_BR":"Etapa",
+          "en":"Stage"
+        },
+        "description":{
+          "pt_BR":"Etapa do Funil (pipeline) para o qual o negócio será enviado",
+          "en":"Stage of pipeline which deal will sent"
+        },
+        "list":{
+          "type":"remote",
+          "helper_method":"pipedrive_stages_list"
+        },
+        "field_type":"dropdown",
+        "required":true,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "name":{
+          "pt_BR":"Etapa",
+          "en":"Stage"
+        },
+        "placeholder":{
+          "pt_BR":"Selecionar etapa",
+          "en":"Select stage"
+        }
+      },
+      {
+        "key":"title",
+        "name":{
+          "pt_BR":"Título do negócio",
+          "en":"Deal title"
+        },
+        "description":{
+          "pt_BR":"Título do negócio que será criado (buscas são baseadas nos títulos)",
+          "en":"Deal title that it will be created (searches are based on titles)"
+        },
+        "field_type":"custom",
+        "required":true,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"user_email",
+        "name":{
+          "pt_BR":"Email do dono",
+          "en":"Owner's e-mail"
+        },
+        "description":{
+          "pt_BR":"Email do usuário que será o dono do negócio",
+          "en":"User e-mail which will be deal's owner"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        },
+        "advanced":true
+      },
+      {
+        "key":"lead_email",
+        "name":{
+          "pt_BR":"Email do cliente",
+          "en":"Customer's e-mail"
+        },
+        "description":{
+          "pt_BR":"Email de contato do cliente",
+          "en":"Customer's contact e-mail"
+        },
+        "field_type":"custom",
+        "required":true,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"value",
+        "name":{
+          "pt_BR":"Valor do negócio",
+          "en":"Deal value"
+        },
+        "description":{
+          "pt_BR":"Valor do negócio que será criado ou atualizado.",
+          "en":"Deal value that will be created or updated."
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"name",
+        "name":{
+          "pt_BR":"Nome do cliente",
+          "en":"Client name"
+        },
+        "description":{
+          "pt_BR":"Nome da pessoa de contato",
+          "en":"Name of the contact person"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":false,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"phone",
+        "name":{
+          "pt_BR":"Telefone do cliente",
+          "en":"Customer's phone"
+        },
+        "description":{
+          "pt_BR":"Telefone de contato do cliente",
+          "en":"Customer's contact phone"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"phone_2",
+        "name":{
+          "pt_BR":"Telefone 2 do cliente",
+          "en":"Customer's phone 2"
+        },
+        "description":{
+          "pt_BR":"Telefone 2 de contato do cliente",
+          "en":"Customer's contact phone 2"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"address.city",
+        "name":{
+          "pt_BR":"Endereço: cidade",
+          "en":"Address: city"
+        },
+        "description":{
+          "pt_BR":"Cidade do contato/empresa do negócio",
+          "en":"Contact/Company deal's city"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"address.state",
+        "name":{
+          "pt_BR":"Endereço: estado",
+          "en":"Address: state"
+        },
+        "description":{
+          "pt_BR":"Estado do contato/empresa do negócio",
+          "en":"Contact/Company deal's state"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"birth_day",
+        "name":{
+          "pt_BR":"Data de nascimento do contato",
+          "en":"Contact birthday"
+        },
+        "description":{
+          "pt_BR":"Data de nascimento do contato",
+          "en":"Contact birthday"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"public_url",
+        "name":{
+          "pt_BR":"URL de referência",
+          "en":"Reference URL"
+        },
+        "description":{
+          "pt_BR":"URL de referência para o negócio",
+          "en":"Reference URL for the deal"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"product",
+        "name":{
+          "pt_BR":"Nome do produto",
+          "en":"Product name"
+        },
+        "description":{
+          "pt_BR":"Nome do produto que será adicionado ao negócio",
+          "en":"Product name that will be added to deal"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":null,
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      },
+      {
+        "key":"currency",
+        "name":{
+          "pt_BR":"Moeda referente ao valor",
+          "en":"Currency for value"
+        },
+        "description":{
+          "pt_BR":"Moeda na qual será criado/incluído o valor do novo negócio",
+          "en":"Currency that will be created/included value of the new deal"
+        },
+        "field_type":"custom",
+        "required":false,
+        "restrictions":null,
+        "default_value":"BRL",
+        "visible":true,
+        "advanced":true,
+        "placeholder":{
+          "pt_BR":"",
+          "en":""
+        },
+        "label":{
+          "pt_BR":"",
+          "en":""
+        }
+      }
+    ]
+  }
+}
