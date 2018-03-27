@@ -162,6 +162,53 @@
       }
     ]
   },
+  "trigger_custom_fields":{
+    "strategy":"fields_as_resource",
+    "request":{
+      "method_name":"/dealFields",
+      "response_field":"data",
+      "json_api":true
+    },
+    "conditions":[[
+      {"field":"key", "condition":"not_equal", "value":"title"},
+      {"field":"key", "condition":"not_equal", "value":"creator_user_id"},
+      {"field":"key", "condition":"not_equal", "value":"user_id"},
+      {"field":"key", "condition":"not_equal", "value":"value"},
+      {"field":"key", "condition":"not_equal", "value":"currency"},
+      {"field":"key", "condition":"not_equal", "value":"weighted_value"},
+      {"field":"key", "condition":"not_equal", "value":"weighted_value_currency"},
+      {"field":"key", "condition":"not_equal", "value":"probability"},
+      {"field":"key", "condition":"not_equal", "value":"org_id"},
+      {"field":"key", "condition":"not_equal", "value":"pipeline"},
+      {"field":"key", "condition":"not_equal", "value":"person_id"},
+      {"field":"key", "condition":"not_equal", "value":"stage_id"},
+      {"field":"key", "condition":"not_equal", "value":"status"},
+      {"field":"key", "condition":"not_equal", "value":"add_time"},
+      {"field":"key", "condition":"not_equal", "value":"update_time"},
+      {"field":"key", "condition":"not_equal", "value":"stage_change_time"},
+      {"field":"key", "condition":"not_equal", "value":"next_activity_date"},
+      {"field":"key", "condition":"not_equal", "value":"last_activity_date"},
+      {"field":"key", "condition":"not_equal", "value":"won_time"},
+      {"field":"key", "condition":"not_equal", "value":"last_incoming_mail_time"},
+      {"field":"key", "condition":"not_equal", "value":"last_outgoing_mail_time"},
+      {"field":"key", "condition":"not_equal", "value":"lost_time"},
+      {"field":"key", "condition":"not_equal", "value":"close_time"},
+      {"field":"key", "condition":"not_equal", "value":"lost_reason"},
+      {"field":"key", "condition":"not_equal", "value":"visible_to"},
+      {"field":"key", "condition":"not_equal", "value":"id"},
+      {"field":"key", "condition":"not_equal", "value":"activities_count"},
+      {"field":"key", "condition":"not_equal", "value":"done_activities_count"},
+      {"field":"key", "condition":"not_equal", "value":"undone_activities_count"},
+      {"field":"key", "condition":"not_equal", "value":"email_messages_count"},
+      {"field":"key", "condition":"not_equal", "value":"expected_close_date"}
+    ]],
+    "mapping":{
+      "key":"{{key}}",
+      "name":"pedido: {{name}}",
+      "description":"Pedido: {{name}}",
+      "source": "source[%({{key}}).to_sym].is_a?(Hash) ? source[%({{key}}).to_sym][:name] : source[%({{key}}).to_sym]"
+    }
+  },
   "trigger_type":"polling",
   "base_datetime_filter":{
     "field":["lost_time"],
