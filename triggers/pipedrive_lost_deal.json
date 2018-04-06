@@ -73,7 +73,7 @@
       {
         "key":"org_id.name",
         "name":"organizaçao nome",
-        "description":"Nome da organizarção da negociação",
+        "description":"Nome da organização da negociação",
         "field_type":"string"
       },
       {
@@ -162,6 +162,138 @@
       }
     ]
   },
+  "trigger_custom_fields":{
+    "strategy":"fields_as_resource",
+    "retrievers": [
+      {
+        "request":{
+          "method_name":"/dealFields",
+          "response_field":"data",
+          "json_api":true
+        },
+        "conditions":[[
+          {"field":"key", "condition":"not_equal", "value":"title"},
+          {"field":"key", "condition":"not_equal", "value":"creator_user_id"},
+          {"field":"key", "condition":"not_equal", "value":"user_id"},
+          {"field":"key", "condition":"not_equal", "value":"value"},
+          {"field":"key", "condition":"not_equal", "value":"currency"},
+          {"field":"key", "condition":"not_equal", "value":"weighted_value"},
+          {"field":"key", "condition":"not_equal", "value":"weighted_value_currency"},
+          {"field":"key", "condition":"not_equal", "value":"probability"},
+          {"field":"key", "condition":"not_equal", "value":"org_id"},
+          {"field":"key", "condition":"not_equal", "value":"pipeline"},
+          {"field":"key", "condition":"not_equal", "value":"person_id"},
+          {"field":"key", "condition":"not_equal", "value":"stage_id"},
+          {"field":"key", "condition":"not_equal", "value":"status"},
+          {"field":"key", "condition":"not_equal", "value":"add_time"},
+          {"field":"key", "condition":"not_equal", "value":"update_time"},
+          {"field":"key", "condition":"not_equal", "value":"stage_change_time"},
+          {"field":"key", "condition":"not_equal", "value":"next_activity_date"},
+          {"field":"key", "condition":"not_equal", "value":"last_activity_date"},
+          {"field":"key", "condition":"not_equal", "value":"won_time"},
+          {"field":"key", "condition":"not_equal", "value":"last_incoming_mail_time"},
+          {"field":"key", "condition":"not_equal", "value":"last_outgoing_mail_time"},
+          {"field":"key", "condition":"not_equal", "value":"lost_time"},
+          {"field":"key", "condition":"not_equal", "value":"close_time"},
+          {"field":"key", "condition":"not_equal", "value":"lost_reason"},
+          {"field":"key", "condition":"not_equal", "value":"visible_to"},
+          {"field":"key", "condition":"not_equal", "value":"id"},
+          {"field":"key", "condition":"not_equal", "value":"activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"done_activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"undone_activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"email_messages_count"},
+          {"field":"key", "condition":"not_equal", "value":"expected_close_date"}
+        ]],
+        "mapping":{
+          "key":"{{key}}",
+          "name":"pedido: {{name}}",
+          "description":"Pedido: {{name}}",
+          "source": "source[%({{key}}).to_sym].is_a?(Hash) ? source[%({{key}}).to_sym][:name] : source[%({{key}}).to_sym]"
+        }
+      },
+      {
+        "request":{
+          "method_name":"/organizationFields",
+          "response_field":"data",
+          "json_api":true
+        },
+        "conditions":[[
+          {"field":"key", "condition":"not_equal", "value":"name"},
+          {"field":"key", "condition":"not_equal", "value":"owner_id"},
+          {"field":"key", "condition":"not_equal", "value":"people_count"},
+          {"field":"key", "condition":"not_equal", "value":"open_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"add_time"},
+          {"field":"key", "condition":"not_equal", "value":"update_time"},
+          {"field":"key", "condition":"not_equal", "value":"visible_to"},
+          {"field":"key", "condition":"not_equal", "value":"next_activity_date"},
+          {"field":"key", "condition":"not_equal", "value":"last_activity_date"},
+          {"field":"key", "condition":"not_equal", "value":"id"},
+          {"field":"key", "condition":"not_equal", "value":"won_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"lost_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"closed_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"done_activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"undone_activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"email_messages_count"},
+          {"field":"key", "condition":"not_equal", "value":"picture_id"},
+          {"field":"key", "condition":"not_equal", "value":"address"},
+          {"field":"key", "condition":"not_equal", "value":"address_subpremise"},
+          {"field":"key", "condition":"not_equal", "value":"address_street_number"},
+          {"field":"key", "condition":"not_equal", "value":"address_route"},
+          {"field":"key", "condition":"not_equal", "value":"address_sublocality"},
+          {"field":"key", "condition":"not_equal", "value":"address_locality"},
+          {"field":"key", "condition":"not_equal", "value":"address_admin_area_level_1"},
+          {"field":"key", "condition":"not_equal", "value":"address_admin_area_level_2"},
+          {"field":"key", "condition":"not_equal", "value":"address_country"},
+          {"field":"key", "condition":"not_equal", "value":"address_postal_code"},
+          {"field":"key", "condition":"not_equal", "value":"address_formatted_address"}
+        ]],
+        "mapping":{
+          "key":"{{key}}",
+          "name":"organização: {{name}}",
+          "description":"Organização: {{name}}",
+          "source": "source[:org_id][:value][%({{key}}).to_sym].is_a?(Hash) ? source[:org_id][:value][%({{key}}).to_sym][:name] : source[:org_id][:value][%({{key}}).to_sym]"
+        }
+      },
+      {
+        "request":{
+          "method_name":"/personFields",
+          "response_field":"data",
+          "json_api":true
+        },
+        "conditions":[[
+          {"field":"key", "condition":"not_equal", "value":"name"},
+          {"field":"key", "condition":"not_equal", "value":"phone"},
+          {"field":"key", "condition":"not_equal", "value":"email"},
+          {"field":"key", "condition":"not_equal", "value":"add_time"},
+          {"field":"key", "condition":"not_equal", "value":"update_time"},
+          {"field":"key", "condition":"not_equal", "value":"org_id"},
+          {"field":"key", "condition":"not_equal", "value":"owner_id"},
+          {"field":"key", "condition":"not_equal", "value":"open_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"visible_to"},
+          {"field":"key", "condition":"not_equal", "value":"next_activity_date"},
+          {"field":"key", "condition":"not_equal", "value":"last_activity_date"},
+          {"field":"key", "condition":"not_equal", "value":"id"},
+          {"field":"key", "condition":"not_equal", "value":"won_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"lost_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"closed_deals_count"},
+          {"field":"key", "condition":"not_equal", "value":"activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"done_activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"undone_activities_count"},
+          {"field":"key", "condition":"not_equal", "value":"email_messages_count"},
+          {"field":"key", "condition":"not_equal", "value":"picture_id"},
+          {"field":"key", "condition":"not_equal", "value":"last_incoming_mail_time"},
+          {"field":"key", "condition":"not_equal", "value":"last_outgoing_mail_time"}
+        ]],
+        "mapping":{
+          "key":"{{key}}",
+          "name":"pessoa: {{name}}",
+          "description":"Pessoa: {{name}}",
+          "source": "source[:person_id][:value][%({{key}}).to_sym].is_a?(Hash) ? source[:person_id][:value][%({{key}}).to_sym][:name] : source[:person_id][:value][%({{key}}).to_sym]"
+        }
+      }
+    ]
+  },
   "trigger_type":"polling",
   "base_datetime_filter":{
     "field":["lost_time"],
@@ -175,6 +307,17 @@
       "sort":"lost_time DESC"
     },
     "response_field":"data",
-    "additional_resources":[]
+    "additional_resources":[
+      {
+        "name":"org_id.value",
+        "method":"/organizations/{id}",
+        "response_field":"data"
+      },
+      {
+        "name":"person_id.value",
+        "method":"/persons/{id}",
+        "response_field":"data"
+      }
+    ]
   }
 }
