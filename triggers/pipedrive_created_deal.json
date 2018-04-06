@@ -206,9 +206,9 @@
         ]],
         "mapping":{
           "key":"{{key}}",
-          "name":"pedido: {{name}}",
-          "description":"Pedido: {{name}}",
-          "source": "source[%({{key}}).to_sym].is_a?(Hash) ? source[%({{key}}).to_sym][:name] : source[%({{key}}).to_sym]"
+          "name":"Deal: {{name}}",
+          "description":"Deal: {{name}}",
+          "source":"source[%({{key}}).to_sym].is_a?(Hash) ? source[%({{key}}).to_sym][:name] : source[%({{key}}).to_sym]"
         }
       },
       {
@@ -250,7 +250,7 @@
         ]],
         "mapping":{
           "key":"{{key}}",
-          "name":"organização: {{name}}",
+          "name":"Organização: {{name}}",
           "description":"Organização: {{name}}",
           "source": "source[:org_id][:value][%({{key}}).to_sym].is_a?(Hash) ? source[:org_id][:value][%({{key}}).to_sym][:name] : source[:org_id][:value][%({{key}}).to_sym]"
         }
@@ -287,8 +287,8 @@
         ]],
         "mapping":{
           "key":"{{key}}",
-          "name":"pessoa: {{name}}",
-          "description":"Pessoa: {{name}}",
+          "name":"Cliente: {{name}}",
+          "description":"Cliente: {{name}}",
           "source": "source[:person_id][:value][%({{key}}).to_sym].is_a?(Hash) ? source[:person_id][:value][%({{key}}).to_sym][:name] : source[:person_id][:value][%({{key}}).to_sym]"
         }
       }
@@ -298,7 +298,7 @@
   "base_datetime_filter":{
     "field":["add_time"],
     "format":"%Y-%m-%d %H:%M:%S",
-    "zone": "London"
+    "zone":"London"
   },
   "request":{
     "method_name":"/deals",
