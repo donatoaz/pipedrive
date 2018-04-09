@@ -77,6 +77,12 @@
         "field_type":"string"
       },
       {
+        "key":"org_id.address",
+        "name":"organizaçao endereço",
+        "description":"Endereço da organização da negociação",
+        "field_type":"string"
+      },
+      {
         "key":"won_time",
         "name":"data em que o deal foi ganho",
         "source":"format_date(format_timezone(source[:won_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
