@@ -316,12 +316,12 @@
     "additional_resources":[
       {
         "name":"org_id.value",
-        "method":"/organizations/{id}",
+        "method":"/organizations/",
         "response_field":"data"
       },
       {
         "name":"person_id.value",
-        "method":"/persons/{id}",
+        "method":"/persons/",
         "response_field":"data"
       }
     ]
