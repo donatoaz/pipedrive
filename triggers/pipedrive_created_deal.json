@@ -85,14 +85,14 @@
       {
         "key":"won_time",
         "name":"data em que o deal foi ganho",
-        "source":"format_date(format_timezone(source[:won_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "source":"format_date(format_timezone(source[:won_time],%q(UTC)),%q(%Y/%m/%d %H:%M:%S))",
         "description":"Data em que o deal foi ganho",
         "field_type":"string"
       },
       {
         "key":"lost_time",
         "name":"data em que o deal foi perdido",
-        "source":"format_date(format_timezone(source[:lost_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "source":"format_date(format_timezone(source[:lost_time],%q(UTC)),%q(%Y/%m/%d %H:%M:%S))",
         "description":"Data em que o deal foi perdido",
         "field_type":"string"
       },
@@ -106,7 +106,7 @@
       {
         "key":"add_time",
         "name":"data em que o deal foi criado",
-        "source":"format_date(format_timezone(source[:add_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "source":"format_date(format_timezone(source[:add_time],%q(UTC)),%q(%Y/%m/%d %H:%M:%S))",
         "description":"Data em que o deal foi criado",
         "field_type":"string"
       },
@@ -162,7 +162,7 @@
       {
         "key":"update_time",
         "name":"data em que o deal foi atualizado",
-        "source":"format_date(format_timezone(source[:update_time],%q(London)),%q(%Y/%m/%d %H:%M:%S))",
+        "source":"format_date(format_timezone(source[:update_time],%q(UTC)),%q(%Y/%m/%d %H:%M:%S))",
         "description":"Data em que o deal foi atualizado",
         "field_type":"string"
       }
@@ -304,7 +304,7 @@
   "base_datetime_filter":{
     "field":["add_time"],
     "format":"%Y-%m-%d %H:%M:%S",
-    "zone":"London"
+    "zone":"UTC"
   },
   "request":{
     "method_name":"/deals",
